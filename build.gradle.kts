@@ -1,11 +1,12 @@
-import org.gradle.internal.impldep.org.apache.commons.io.output.ByteArrayOutputStream
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.io.ByteArrayOutputStream
 import java.nio.charset.Charset
 
 plugins {
     kotlin("jvm") version "1.9.22"
     application
     id("io.vertx.vertx-plugin") version "1.3.0"
+//    id("com.github.johnrengelman.shadow") version "7.0.0"
 }
 
 fun getVersionName():Any{
@@ -21,7 +22,7 @@ fun getVersionName():Any{
     }
 }
 
-group = "com.rose"
+group = "com.rose.blog"
 version = getVersionName()
 
 repositories {
@@ -29,7 +30,7 @@ repositories {
 }
 
 dependencies {
-    implementation(platform("io.vertx:vertx-core:4.4.4"))
+    implementation(platform("io.vertx:vertx-core:4.5.9"))
     implementation("io.vertx:vertx-web")
     implementation("io.vertx:vertx-mongo-client")
     implementation("io.vertx:vertx-mail-client")
@@ -38,11 +39,11 @@ dependencies {
     implementation("org.slf4j:slf4j-api:2.0.7")
     implementation("io.vertx:vertx-auth-oauth2:4.4.4")
     implementation("commons-logging:commons-logging:1.2")
-    implementation("org.springframework.security:spring-security-crypto:5.5.4")
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
+    implementation("org.springframework.security:spring-security-crypto:5.6.4")
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
-    implementation("org.json:json:20230227")
+    implementation("org.json:json:20231013")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.2")
     testImplementation("io.vertx:vertx-junit5")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.3.2")
@@ -69,8 +70,4 @@ tasks.test {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
-}
-
-application {
-    mainClass.set("MainKt")
 }
