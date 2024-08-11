@@ -39,6 +39,7 @@ dependencies {
     implementation("org.slf4j:slf4j-api:2.0.7")
     implementation("io.vertx:vertx-auth-oauth2:4.4.4")
     implementation("commons-logging:commons-logging:1.2")
+    implementation("io.github.cdimascio:dotenv-java:3.0.0")
     implementation("org.springframework.security:spring-security-crypto:5.6.4")
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
     implementation("com.squareup.okhttp3:okhttp")
