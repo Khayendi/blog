@@ -10,7 +10,6 @@ import io.vertx.core.json.JsonObject
 import io.vertx.ext.web.Router
 import io.vertx.ext.web.RoutingContext
 import io.vertx.ext.web.handler.CorsHandler
-import java.net.http.HttpResponse.BodyHandler
 
 class BlogService(private val dotEnv: Dotenv = Dotenv.load(), private val port: Int = dotEnv.get("APP_PORT").toInt()) :
     AbstractVerticle() {
@@ -54,7 +53,7 @@ class BlogService(private val dotEnv: Dotenv = Dotenv.load(), private val port: 
                     .allowedMethods(dotEnv.get("ALLOWED_METHODS").split(",").map { it.toHttpMethod() }
                         .also { this.logger.info("$it methods were registered successfully.") }.toSet())
             )
-        router.route().handler{
+        router.route().handler {
             this.logger.info("${it.request().method()} --> ${it.request().uri()}")
             it.next()
         }
