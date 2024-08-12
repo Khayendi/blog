@@ -6,7 +6,7 @@ plugins {
     kotlin("jvm") version "1.9.22"
     application
     id("io.vertx.vertx-plugin") version "1.3.0"
-//    id("com.github.johnrengelman.shadow") version "7.0.0"
+    id("com.github.johnrengelman.shadow") version "7.0.0"
 }
 
 fun getVersionName():Any{
